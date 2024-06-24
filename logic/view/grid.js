@@ -13,7 +13,7 @@ function Grid()
 
     if (SETTINGS.USEMASONRY)
     {
-      this.msnry = new Masonry(elemContainer, 
+      this.msnry = new Masonry(elemContainer,
       {
         itemSelector: elemItem,
         columnWidth: 350,
@@ -88,7 +88,7 @@ function Grid()
           if (Array.isArray(value.QOTE) && value.QOTE.length > SETTINGS.AUTOWIDETRIGGER)
           {
             itemClass += " article-wide";
-          } 
+          }
         }
       }
 
@@ -101,7 +101,7 @@ function Grid()
 
       // ARTICLE
       let article = `<article class="${itemClass}" id="${SETTINGS.ARTICLEIDBASE + value.DIID}">`;
-      
+
       if (main.util.isDefined(value.LINK))
       {
         var idUrl = "url";
@@ -142,12 +142,12 @@ function Grid()
             for (let l = 0; l < value.LINK.length; l++)
             {
               article += `<a class="article-link" href="${String(value.LINK[l])}" id="${idUrl}">`;
-              article += `<div class="article-linkcontainer"><div class="article-linkicon">${main.util.buildIcon('link')}</div><div class="article-linktitle">${main.util.extractRootDomain(value.LINK[l])}</div></div></a>`;
+              article += `<div class="article-linkcontainer"><div class="article-linktitle">${main.util.extractRootDomain(value.LINK[l])}</div></div></a>`;
             }
           }
           else
           {
-            article += `<div class="article-linkcontainer"><div class="article-linkicon">${main.util.buildIcon('link')}</div><div class="article-linktitle">${main.util.extractRootDomain(value.LINK)}</div></div></a>`;
+            article += `<div class="article-linkcontainer"><div class="article-linktitle">${main.util.extractRootDomain(value.LINK)}</div></div></a>`;
           }
         }
 
@@ -161,7 +161,6 @@ function Grid()
             for (let tc = 0; tc < value.TYPE.length; tc++)
             {
               article += `<a class="article-type" href='#type-${value.TYPE[tc]}'>`;
-              article += main.util.buildIcon(value.TYPE[tc], value.TYPE[tc], 'article-typeicon');
               article += `</a>`;
             }
           }
@@ -170,7 +169,6 @@ function Grid()
           {
             let done = main.util.isDefined(value.DONE) ? value.DONE : 'false';
             article += `<a class="article-type" href='#done-${done}'>`;
-            article += main.util.buildIcon(done, done, 'article-typeicon');
             article += `</a>`;
           }
 
@@ -194,7 +192,7 @@ function Grid()
           article += `<div class="image-overlay" ${onclickImage}></div>`;
         }
         article += `<img class="article-image-img" src="content/media/${value.FILE}">`;
-        
+
         article += this.doLower(value, articleIsImageType, onclickImage);
 
         article += `</div>`;
@@ -225,7 +223,7 @@ function Grid()
           }
         article += `</div>`;
       }
-      else 
+      else
       {
         // NORMAL ARTICLE (NON-IMAGE)
         article += this.doLower(value, articleIsImageType, onclickImage);
@@ -301,9 +299,9 @@ function Grid()
             article += this.doRowMulti('progress', value.PROG);
           }
         }
-        
+
         // IMAGE - for non-image-type-article
-        if (SETTINGS.SHOWIMAG 
+        if (SETTINGS.SHOWIMAG
           && !main.util.isType(value.TYPE, 'image')
           && main.util.isDefined(value.FILE)
           && main.util.isImage(value.FILE))
@@ -318,7 +316,7 @@ function Grid()
         {
           if (main.util.isObject(value.FILE))
           {
-            for (var i = 0; i < value.FILE.length; i++) 
+            for (var i = 0; i < value.FILE.length; i++)
             {
               article += this.doRow('file', `<a class="article-file-link" href="content/media/${value.FILE[i]}">${value.FILE[i]}</a>`, 'article-file');
             }
@@ -339,7 +337,6 @@ function Grid()
     this.doRow = function(type, content, extraClass)
     {
       return `<div class="article-row${extraClass != undefined ? ' '+extraClass : ''}">
-      ${type != undefined ? main.util.buildIcon(type) : ''}
       <div class="article-rowtext">${content}</div>
       </div>`;
     }
@@ -371,7 +368,7 @@ function Grid()
             if (data[i].includes(": "))
             {
               let titleSplit = data[i].substring(2).split(': '); // .substring(2) removes the "> "
-              for (var e = 0; e < titleSplit.length; e++) 
+              for (var e = 0; e < titleSplit.length; e++)
               {
                 titleSplit[e] = titleSplit[e].trim();
               }
@@ -413,7 +410,7 @@ function Grid()
       var target = e.target || e.srcElement;
       if (target == element)
       {
-        // If user is clicking given element, or element's background... 
+        // If user is clicking given element, or element's background...
         // as opposed to an element's child content, then do lightbox.
         // This stops lightbox from happening when clicking on tags, file etc
         lightbox.load(`content/media/${file}`);

@@ -8,41 +8,6 @@ function Util()
     return `<i ${labelElem}class="${main.util.getIcon(type)} textIcon ${iconClass}"></i>`;
   }
 
-  this.getIcon = function(type)
-  {
-    let icon = '';
-    switch (type) 
-    {
-        case 'article': icon = 'far fa-newspaper'; break;
-        case 'podcast': icon = 'fas fa-podcast'; break;
-        case 'video': icon = 'fas fa-tv'; break;
-        case 'list': icon = 'fas fa-file-alt'; break;
-        case 'book': icon = 'fas fa-book-open'; break;
-        case 'game': icon = 'fas fa-gamepad'; break;
-        case 'service': icon = 'fas fa-server'; break;
-        case 'lecture': icon = 'fas fa-chalkboard-teacher'; break;
-        case 'quote': icon = 'fas fa-comment'; break;
-        case 'tool': icon = 'fas fa-wrench'; break;
-        case 'music': icon = 'fas fa-music'; break;
-        case 'image': icon = 'fas fa-image'; break;
-        case 'encyclopedia': icon = 'fas fa-globe'; break;
-        case 'term': icon = 'fas fa-ribbon'; break;
-        case 'note': icon = 'fas fa-sticky-note'; break;
-        case 'inspiration': icon = 'fas fa-star'; break;
-        case 'date': icon = 'fas fa-clock'; break;
-        case 'author': icon = 'fas fa-user'; break;
-        case 'tags': icon = 'fas fa-tag'; break;
-        case 'project': icon = 'fas fa-leaf'; break;
-        case 'progress': icon = 'fas fa-clock'; break;
-        case 'file': icon = 'fas fa-folder-open'; break;
-        case 'dash': icon = 'fas fa-caret-right'; break;
-        case 'link': icon = 'fas fa-link'; break;
-        case 'true': icon = 'fas fa-check'; break;
-        case 'false': icon = 'fas fa-times'; break;
-      }
-    return icon;
-  }
-
   this.isDefined = function(value)
   {
     return (typeof value !== 'undefined');
@@ -86,8 +51,8 @@ function Util()
     arrLen = splitArr.length;
 
     // extracting the root domain here
-    // if there is a subdomain 
-    if (arrLen > 2) 
+    // if there is a subdomain
+    if (arrLen > 2)
     {
       domain = splitArr[arrLen - 2] + '.' + splitArr[arrLen - 1];
       // check to see if it's using a Country Code Top Level Domain (ccTLD) (i.e. ".me.uk")
